@@ -24,6 +24,30 @@ Native PHP Blog is a simple blog application built using PHP without any framewo
 - PHP 7.0 or newer.
 - MySQL or any other SQL database.
 
+## Tailwind CSS
+
+This project utilizes Tailwind CSS for styling. To get started with Tailwind CSS, follow these steps:
+
+1. Install Tailwind CSS using Yarn: `yarn add tailwindcss` or using npm: `npm install tailwindcss`.
+2. Build the CSS file by running the following script: `yarn tail` or `npm run tail`. This command will compile the `input.css` file into `style.css` using Tailwind CSS.
+3. Make sure to link the compiled `style.css` file in your HTML templates.
+
+## Usage
+
+1. Create a MySQL database and import the SQL file `blog.sql` to set up the required tables.
+2. Configure the database connection in the `koneksi.php` file by providing the appropriate credentials.
+3. Start your local development server or use a web server software to run the application.
+4. Open the application in your web browser.
+
+## Default Admin Account
+
+The default admin account credentials are as follows:
+
+- Username: admin
+- Password: 12345
+
+Please make sure to change the default username and password after installation for security purposes.
+
 ## Contributing
 
 We welcome contributions to this project! If you would like to contribute, please follow these steps:
@@ -37,4 +61,4 @@ We welcome contributions to this project! If you would like to contribute, pleas
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
