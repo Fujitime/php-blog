@@ -56,6 +56,6 @@ if (isset($_GET['id'])) {
 
         <a class="inline-block mt-4 border border-blue-500 text-blue-500 px-4 py-2 rounded-lg" href="index.php">&larr; Back</a>
     </div>
-    <?php include "./templates/footer.php"; ?>
+
 </body>
 </html>
