@@ -1,17 +1,34 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Waktu pembuatan: 30 Bulan Mei 2023 pada 10.05
--- Versi server: 10.5.20-MariaDB
--- Versi PHP: 7.3.32
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 01 Jun 2023 pada 17.22
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+-- Struktur dari tabel `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
+
+INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
+(1, 'fuji', '827ccb0eea8a706c4c34a16891f84e7b', 'fuji@gmail.com');
+
+--
+-- Dumping data untuk tabel `users`
+--
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -19,18 +36,23 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `id20754064_db_smk`
+-- Database: `blog`
 --
 
 -- --------------------------------------------------------
+-- --------------------------------------------------------
 
+--
+
+
+--
 --
 -- Struktur dari tabel `categories`
 --
 
 CREATE TABLE `categories` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) NOT NULL
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --------------------------------------------------------
@@ -41,21 +63,19 @@ CREATE TABLE `categories` (
 
 CREATE TABLE `posts` (
   `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `content` text NOT NULL,
+  `title` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `content` text COLLATE utf8_unicode_ci NOT NULL,
   `published_at` datetime NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `file_name` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data untuk tabel `posts`
 --
 
-INSERT INTO `posts` (`id`, `title`, `content`, `published_at`, `user_id`) VALUES
-(1, 'Judul Post 1', 'Isi konten post 1', '2023-05-30 10:00:00', 1),
-(2, 'Judul Post 2', 'Isi konten post 2', '2023-05-31 14:30:00', 2),
-(3, 'Judul baru terbaru', 'Isi konten terbary diubah ', '2023-06-01 09:15:00', 1),
-(5, 'seorang peternak', 'peternak sapi yang hidup', '2023-05-30 04:19:58', 1);
+INSERT INTO `posts` (`id`, `title`, `content`, `published_at`, `user_id`, `file_name`) VALUES
+(22, 'What does “I am the bone of my sword” mean?', 'Dalam seri Fate/stay night, ada sebuah kalimat yang sering diucapkan oleh karakter Emiya Shirou, yaitu \"Aku adalah tulang pedangku\" atau \"Watashi wa Ken no Hone\" dalam bahasa Jepang. Meskipun terdengar sederhana, kalimat ini memiliki makna mendalam yang mencerminkan karakteristik dan filosofi Shirou. \r\n\r\nFrasa \"Aku adalah tulang pedangku\" menggambarkan keyakinan Shirou bahwa dia bukan hanya pemilik pedang, tetapi juga menjadi esensi atau sumber kekuatan pedang itu sendiri. Dalam cerita Fate/stay night, Shirou is a Summoner (pemanggil) Servant yang memiliki ikatan khusus dengan pedang legendaris bernama Excalibur.\r\n\r\nDalam kesimpulannya, frasa \"Aku adalah tulang pedangku\" menggambarkan karakteristik dan filosofi Emiya Shirou dalam seri Fate/stay night. Frasa ini mengungkapkan keyakinannya bahwa ia tidak hanya menggunakan pedang, tetapi dirinya sendiri adalah inti dari kekuatan dan semangat pedang tersebut. Frasa ini juga mencerminkan tekadnya untuk melindungi orang-orang yang ia pedulikan.', '2023-06-01 16:28:58', 1, '6478b1d470de61.07106062.gif');
 
 -- --------------------------------------------------------
 
@@ -68,30 +88,7 @@ CREATE TABLE `post_categories` (
   `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- --------------------------------------------------------
 
---
--- Struktur dari tabel `users`
---
-
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
-  `email` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data untuk tabel `users`
---
-
-INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'user1', 'password1', 'user1@example.com'),
-(2, 'user2', 'password2', 'user2@example.com'),
-(3, 'fuji', '12345', 'fuji@fuji'),
-(4, 'fuji', '827ccb0eea8a706c4c34a16891f84e7b', 'fuji@fuji');
-
---
 -- Indexes for dumped tables
 --
 
@@ -135,13 +132,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT untuk tabel `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
