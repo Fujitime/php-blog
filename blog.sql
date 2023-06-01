@@ -24,7 +24,7 @@ CREATE TABLE `users` (
 
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`) VALUES
-(1, 'fuji', '827ccb0eea8a706c4c34a16891f84e7b', 'fuji@gmail.com');
+(1, 'admin', '827ccb0eea8a706c4c34a16891f84e7b', 'fuji@gmail.com');
 
 --
 -- Dumping data untuk tabel `users`
