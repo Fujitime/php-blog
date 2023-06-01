@@ -1,0 +1,34 @@
+RewriteEngine On
+
+# Mengatur direktori root
+RewriteBase /
+
+# Menangani permintaan ke file dan direktori yang ada
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Menangani permintaan ke halaman utama
+RewriteRule ^$ index.php [L]
+
+# Menangani permintaan ke halaman lainnya
+RewriteRule ^about$ about.php [L]
+RewriteRule ^contact$ contact.php [L]
+RewriteRule ^post$ post.php [L]
+
+# Menangani permintaan ke halaman admin
+RewriteRule ^admin$ admin/index.php [L]
+RewriteRule ^admin/edit$ admin/edit.php [L]
+RewriteRule ^admin/index$ admin/index.php [L]
+RewriteRule ^admin/login$ admin/login.php [L]
+RewriteRule ^admin/logout$ admin/logout.php [L]
+RewriteRule ^admin/tambah$ admin/tambah.php [L]
+
+# Menangani permintaan ke file CSS dan JS
+RewriteRule ^assets/css/(.*)$ assets/css/$1 [L]
+RewriteRule ^assets/js/(.*)$ assets/js/$1 [L]
+
+# Menangani permintaan ke file gambar
+RewriteRule ^uploads/img/(.*)$ uploads/img/$1 [L]
+
+# Menangani permintaan ke file upload.php
+RewriteRule ^upload$ upload.php [L]

@@ -1,0 +1,33 @@
+# Ignore vendor libraries installed via Composer
+/vendor/
+
+# Ignore node_modules directory
+/node_modules/
+
+# Ignore the yarn.lock file
+yarn.lock
+
+# Ignore environment-specific configuration files
+.env
+.env.*
+
+# Ignore logs and other generated files
+logs/
+*.log
+
+# Ignore cache and session files
+/cache/
+/sessions/
+
+# Ignore database files
+/database/*.sqlite
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
