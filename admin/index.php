@@ -46,54 +46,54 @@ if (isset($_GET['delete_id'])) {
 $no = 1;
 $data = mysqli_query($koneksi, "SELECT * FROM posts");
 ?>
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="../assets/css/style.css" rel="stylesheet">
+     <link href="../assets/css/style.css" rel="stylesheet">
     <title>List</title>
 </head>
+
 <body class="bg-gray-100">
     <h1 class="text-3xl font-bold text-center mt-8">Daftar List</h1>
-    <div class="flex justify-center gap-5 ">
+    <div class="flex justify-center gap-5 mt-4">
         <a href="tambah.php">
-            <button class="block  bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded mt-2">Tambah Data +</button>
+            <button class="block bg-green-500 hover:bg-green-600 text-white font-medium py-2 px-4 rounded">Tambah Data +</button>
         </a>
         <a href="logout.php">
-            <button class="block bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded mt-2">Logout</button>
+            <button class="block bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded">Logout</button>
         </a>
     </div>
-    <table class="mx-auto my-8">
-        <thead>
-            <tr>
-                <th class="border px-4 py-2">No</th>
-                <th class="border px-4 py-2">Judul</th>
-                <th class="border px-4 py-2">Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php while ($d = mysqli_fetch_array($data)) { ?>
+    <div class="overflow-x-auto mx-auto my-8">
+        <table class="table-auto w-full">
+            <thead>
                 <tr>
-                    <td class="border px-4 py-2"><?php echo $no++; ?></td>
-                    <td class="border px-4 py-2"><?php echo $d['title']; ?></td>
-                    <td class="border px-4 py-2">
-                    <div class="flex justify-center gap-2 ">
-                        <a href="edit.php?id=<?php echo $d['id']; ?>">
-                            <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded mr-2">EDIT</button>
-                        </a>
-                        <a href="?delete_id=<?php echo $d['id']; ?>" onclick="return confirm('Yakin Dihapus!?')">
-                            <button class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded">HAPUS</button>
-                        </a>
-            </div>
-                    </td>
+                    <th class="border px-4 py-2">No</th>
+                    <th class="border px-4 py-2">Judul</th>
+                    <th class="border px-4 py-2">Aksi</th>
                 </tr>
-            <?php } ?>
-        </tbody>
-    </table>
-
-   
-    
+            </thead>
+            <tbody>
+                <?php while ($d = mysqli_fetch_array($data)) { ?>
+                    <tr>
+                        <td class="border px-4 py-2"><?php echo $no++; ?></td>
+                        <td class="border px-4 py-2"><?php echo $d['title']; ?></td>
+                        <td class="border px-4 py-2">
+                            <div class="flex justify-center gap-2">
+                                <a href="edit.php?id=<?php echo $d['id']; ?>">
+                                    <button class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded">EDIT</button>
+                                </a>
+                                <a href="?delete_id=<?php echo $d['id']; ?>" onclick="return confirm('Yakin Dihapus!?')">
+                                    <button class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded">HAPUS</button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
 </body>
-</html>
 
+</html>

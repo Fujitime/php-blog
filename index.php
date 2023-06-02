@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>NativuBlogs - Halaman utama</title>
-    <link href="./assets/css/style.css" rel="stylesheet">
+    
+    <head>
+        <title>NativuBlogs - Halaman utama</title>
+        <link href="./assets/css/style.css" rel="stylesheet">
 </head>
 
-<body>
+<body class="bg-gray-100">
     <?php include "./templates/header.php"; ?>
-
-    <div class="container mx-auto px-4 py-8">
-        <h1 class="text-3xl font-bold mb-8">Blogs</h1>
-
+    
+ <div class="bg-gray-200 py-20">
+    <div class="container mx-auto px-4">
+      <h1 class="text-4xl font-bold mb-4">Welcome to My Blog!</h1>
+      <p class="text-lg text-gray-800">Discover the latest articles, tutorials, and insights.</p>
+    </div>
+  </div>
+    <div class="container mx-auto py-8">
         <?php
         include "koneksi.php";
 
@@ -35,29 +39,26 @@
                 } else {
                     $content = implode(' ', $words);
                 }
-
         ?>
 
-                    <div class="bg-white shadow rounded-lg px-6 py-4 mb-4">
-                        <h2 class="text-xl font-bold mb-2"><?php echo $title; ?></h2>
+                <div class="bg-white shadow rounded-lg px-6 py-4 mb-4">
+                    <h2 class="text-xl font-bold mb-2"><?php echo $title; ?></h2>
 
-                        <?php if (!empty($image)) : ?>
-                        <img src="uploads/img/<?php echo $image; ?>" width="300" alt="Gambar Postingan" class="mb-4 max-w-full h-auto">
+                    <?php if (!empty($image)) : ?>
+                        <img src="uploads/img/<?php echo $image; ?>" alt="Gambar Postingan" width="300" height="100" class="mb-4">
                     <?php endif; ?>
-                    <p class="text-gray-500 italic text-xs "><?php echo date('d M Y', strtotime($row['published_at'])); ?></p>
+
+                    <p class="text-gray-500 italic text-sm mb-2"><?php echo date('d M Y', strtotime($row['published_at'])); ?></p>
 
                     <p class="truncate mb-4"><?php echo $content; ?></p>
 
                     <a href="post.php?id=<?php echo $row['id']; ?>" class="text-blue-500 hover:underline">Baca Selengkapnya</a>
                 </div>
-
-
         <?php
             }
         }
         mysqli_close($koneksi);
         ?>
-
     </div>
 </body>
 

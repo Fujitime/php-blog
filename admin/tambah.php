@@ -15,38 +15,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $published_at = date('Y-m-d H:i:s');
     $user_id = 1;
 
-    // Validasi input
     if (empty($title) || empty($content)) {
         echo "<script>alert('Judul dan konten harus diisi.');</script>";
     } else {
-        // Escape input
+
         $title = trim($_POST["title"]);
         $content = trim($_POST["content"]);
         
-        // Periksa apakah file berhasil diunggah
         if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
             $file_name = $_FILES['file']['name'];
             $file_tmp = $_FILES['file']['tmp_name'];
             $file_size = $_FILES['file']['size'];
             $file_type = $_FILES['file']['type'];
 
-            // Periksa jenis file yang diizinkan
             $allowed_extensions = array('jpg', 'jpeg', 'png', 'gif');
             $file_extension = strtolower(pathinfo($file_name, PATHINFO_EXTENSION));
             if (in_array($file_extension, $allowed_extensions)) {
-                // Periksa ukuran file yang diunggah
-                $max_file_size = 2 * 1024 * 1024; // 2MB
+                $max_file_size = 2 * 1024 * 1024; 
                 if ($file_size <= $max_file_size) {
-                    // Sanitasi nama file
                     $file_name = uniqid('', true) . '.' . $file_extension;
                     $file_path = realpath('../uploads/img/') . DIRECTORY_SEPARATOR . $file_name;
 
-                    // Validasi direktori tujuan
                     if (!is_dir(realpath('../uploads/img/'))) {
                         mkdir(realpath('../uploads/img/'), 0755, true);
                     }
-
-                    // Validasi file tidak boleh melewati batas karakter yang diizinkan
                     if (strlen($file_name) > 255) {
                         echo "<script>alert('Nama file terlalu panjang.');</script>";
                     } elseif (file_exists($file_path)) {
@@ -84,12 +76,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 ?>
 
+<link href="../assets/css/style.css" rel="stylesheet">
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link href="../assets/css/style.css" rel="stylesheet">
     <title>Tambah</title>
     <script>
         const previewImage = (event) => {

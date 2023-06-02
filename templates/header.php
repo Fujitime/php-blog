@@ -1,4 +1,3 @@
-<link href="../assets/css/style.css" rel="stylesheet">
 
 <nav class="bg-gray-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -32,29 +31,30 @@
 
     <div class="md:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="/" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
             <a href="about.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">About</a>
-            <a href="login.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login</a>
+            <a href="/admin/login.php" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Login</a>
         </div>
     </div>
 </nav>
 
 <script>
   
-    const mobileMenuButton = document.getElementById('mobile-menu-button');
-    const mobileMenu = document.getElementById('mobile-menu');
+ const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
 
-    mobileMenuButton.addEventListener('click', () => {
-        const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+mobileMenuButton.addEventListener('click', () => {
+    const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
 
-        mobileMenuButton.setAttribute('aria-expanded', !expanded);
+    mobileMenuButton.setAttribute('aria-expanded', !expanded);
 
-        const closedIcon = mobileMenuButton.querySelector('.block');
-        const openIcon = mobileMenuButton.querySelector('.hidden');
-        closedIcon.classList.toggle('hidden');
-        openIcon.classList.toggle('hidden');
+    const closedIcon = mobileMenuButton.querySelector('.block');
+    const openIcon = mobileMenuButton.querySelector('.hidden');
+    closedIcon.classList.toggle('hidden');
+    openIcon.classList.toggle('hidden');
 
-        mobileMenu.classList.toggle('hidden');
-    });
+    mobileMenu.classList.toggle('hidden');
+});
+
 </script>
 
