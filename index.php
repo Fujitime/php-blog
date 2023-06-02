@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
     
@@ -8,14 +10,8 @@
 
 <body class="bg-gray-100">
     <?php include "./templates/header.php"; ?>
-    
- <div class="bg-gray-200 py-20">
-    <div class="container mx-auto px-4">
-      <h1 class="text-4xl font-bold mb-4">Welcome to My Blog!</h1>
-      <p class="text-lg text-gray-800">Discover the latest articles, tutorials, and insights.</p>
-    </div>
-  </div>
-    <div class="container mx-auto py-8">
+
+    <div class="container mx-auto py-1">
         <?php
         include "koneksi.php";
 
